@@ -4,71 +4,43 @@ using System;
 public class Gladiator {
     //I keep every field private, such that they can only be changed through the setters.
     //I keep every setter except for Name public, since they are used throughout the codebase, particularly at the different subclasses GetExperience() method.
+
+    //I have made everything as secure as possible, if I change the accessibility of any of the remaining properties, I get errors.
+
     private string name;
     public string Name {
-        get {
-            return name;
-        }
-        private set {
-            name = value;
-        } //Since the gladiators name is always set as a parameter, there are no reason for its setter to be public.
+        get { return name; }
+        private set { name = value; }
     }
     private int level;
-    public int Level {
-        get {
-            return level;
-        }
-        set {
-            level = value;
-        }
+    protected int Level {
+        get { return level; }
+        set { level = value; }
     }
     private int maxHealth;
-    public int MaxHealth {
-        get {
-            return maxHealth;
-        }
-        set {
-            maxHealth = value;
-        }
+    protected int MaxHealth {
+        get { return maxHealth; }
+        set { maxHealth = value; }
     }
     private int health;
-    public int Health {
-        get {
-            return health;
-        }
-        set {
-            if (value > maxHealth) {
-                value = maxHealth;
-            }
-            health = value;
-        }
+    public int Health { 
+        get { return health; }
+        set { health = (value > maxHealth) ? maxHealth : value; } //Use of the ternary operators. I could not find a use for it anywhere else without sacrificing clarity.
     }
     private int strength;
-    public int Strength {
-        get {
-            return strength;
-        }
-        set {
-            strength = value;
-        }
+    protected int Strength {
+        get { return strength; }
+        set { strength = value; }
     }
     private int dodge;
-    public int Dodge {
-        get {
-            return dodge;
-        }
-        set {
-            dodge = value;
-        }
+    protected int Dodge {
+        get { return dodge; }
+        set { dodge = value; }
     }
     private int doubleStrike;
-    public int DoubleStrike {
-        get {
-            return doubleStrike;
-        }
-        set {
-            doubleStrike = value;
-        }
+    protected int DoubleStrike {
+        get { return doubleStrike; }
+        set { doubleStrike = value; }
     }
 
     private Random rand = new Random();

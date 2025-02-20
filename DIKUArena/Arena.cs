@@ -20,7 +20,7 @@ public class Arena {
             Console.WriteLine($"Enemy health: {inactive.Health}");
 
 
-            if (inactive.HasLost()) {
+            if ( inactive.HasLost() ) {
                 winner = current;
             }
             Gladiator temp = current;
